@@ -1,0 +1,28 @@
+<html ng-app>
+
+<head>
+    <title>隐藏与显示用法</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+</head>
+
+<body>
+   <div ng-controller="MenuController">
+        <button ng-click="toggleMenu()">切换</button>
+        <ul ng-show="menuState.show">
+            <li ng-click="stun()">11111</li>
+            <li ng-click="saastun()">22222</li>
+            <li ng-click="stusdn()">33333</li>
+        </ul>
+   </div>
+<script type="text/javascript">
+function MenuController($scope){
+    $scope.menuState = {show: 'true'};
+    $scope.toggleMenu = function(){
+         $scope.menuState.show = !$scope.menuState.show;
+    };
+};
+</script>
+</body>
+
+</html>

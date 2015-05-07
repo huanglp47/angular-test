@@ -1,0 +1,35 @@
+<html ng-app="myApp">
+
+<head>
+    <title>首字符大写,过滤转化filter</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+</head>
+
+<body>
+<div ng-controller="CartController">
+   <p>{{pageContent|firstLetterToUpperCase}}</p>
+</div>
+<script type="text/javascript">
+
+function CartController($scope){
+  $scope.pageContent= 'above all, nice to meet you,guys!';
+};
+
+var myModule=  angular.module('myApp', []);
+
+myModule.filter('firstLetterToUpperCase', function(){
+var titleCase= function(input){
+      var words= input.split(' ');
+      for(var i=0,len=words.length;i<len;i++){
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+      }
+      return  words.join(' ');
+};
+ return titleCase
+});
+
+</script>
+</body>
+
+</html>

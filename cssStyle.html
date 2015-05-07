@@ -1,0 +1,40 @@
+<html ng-app>
+
+<head>
+    <title>添加css样式</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+    <style type="text/css" media="screen">
+        .seleted{
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+   <table ng-controller="SelectedStyleController">
+       <tr ng-repeat="restaurant in directory" ng-click="selectStyle($index)" ng-class="{seleted: $index==selectedRow}">
+           <td>{{$index + 1}}</td>
+           <td>{{restaurant.name}}</td>
+           <td>{{restaurant.pos}}</td> 
+       </tr>
+   </table>
+<script type="text/javascript">
+ function SelectedStyleController($scope){
+    $scope.directory = [
+        {name: 'sdfsdgdfhfgjh', pos: 'rrr'},
+        {name: 'aahfgjh', pos: 'rrvbr'},
+        {name: 'dfdfdf', pos: '4545'},
+        {name: 'sdfsrrdgdfhfgjh', pos: 'rrvvvr'},
+        {name: 'cvvcvcv', pos: '566'},
+        {name: 'hjhjhj', pos: 'rryur'},
+    ];
+    $scope.selectStyle = function(row){
+        $scope.selectedRow = row;
+    };
+ };
+
+</script>
+</body>
+
+</html>

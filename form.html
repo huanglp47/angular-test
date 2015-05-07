@@ -1,0 +1,52 @@
+<html ng-app>
+<head>
+<title>输入数字的10倍</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+</head>
+
+<body>
+    <form ng-controller='HelloController'>
+        <input ng-change="changeFn()" ng-model="funding.startingEstimate">
+        <p>Recommendation: {{funding.needed}}</p>
+    </form>
+
+    <form ng-submit="sumitForm()" ng-controller='HelloController2'>
+        <input ng-change="changeFn2()" ng-model="funding.startingEstimate">
+        <p>Recommendation: {{funding.needed}}</p>
+        <button ng-click="reset()">Reset</button>
+    </form>
+<script type="text/javascript">
+	function HelloController($scope){
+		$scope.funding = { startingEstimate: 0};
+		// $scope.changeFn = function(){
+		// 	$scope.funding.needed = $scope.funding.startingEstimate * 10;
+		// };
+		changeFn = function(){
+			$scope.funding.needed = $scope.funding.startingEstimate * 10;
+		};
+		$scope.$watch('funding.startingEstimate', changeFn);
+	}
+
+	function HelloController2($scope){
+		$scope.funding = { startingEstimate: 0};
+		// $scope.changeFn = function(){
+		// 	$scope.funding.needed = $scope.funding.startingEstimate * 10;
+		// };
+		changeFn2 = function(){
+			$scope.funding.needed = $scope.funding.startingEstimate * 10;
+		};
+		$scope.$watch('funding.startingEstimate', changeFn2);
+
+		$scope.reset = function(){
+			$scope.funding.startingEstimate = 0;
+		};
+
+		$scope.sumitForm = function(){
+			alert('表单提交');
+		};
+	}
+</script>
+</body>
+
+</html>
